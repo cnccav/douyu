@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "斗鱼抢鱼丸",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "斗鱼的快速抢鱼丸!会自动关闭未关注主播的窗口。",
     "icons": {
       "128": "icon/128.png",
