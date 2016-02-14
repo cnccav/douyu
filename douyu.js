@@ -18,10 +18,17 @@
             if (!$(".peck-cdn").is(":hidden")) {
                 // console.log($("#sendmsg span").text());
 
-                $("#chart_content").val('喜欢 ' + zb_name + ' 的朋友请点一下关注~！    ' + textRandom(4));
-                $("#sendmsg_but").click();
-                ctrlclear('chat_line_list');
-                console.log("发送");
+               if(document.getElementById("sendmsg").childNodes.item(0).childNodes.item(0)==null){
+                  if(chart_content!=$("#chart_content").val()){
+                    chart_content ='喜欢 ' + zb_name + ' 的朋友请点一下关注~！    ' + textRandom(4);
+                  }
+                  $("#chart_content").val(chart_content);
+                  ctrlclear('chat_line_list');
+                  $("#sendmsg_but").click();
+                  console.log("发送");
+                }else{
+                  console.log("正在倒计时被限制发送了！");
+                }
                 TT = false;
                 ii++;
             } else {
@@ -46,6 +53,13 @@
                 // console.log(TT);
                 if(TT == true && $(".loginShow.fl.js_login_no").css("display")=="none"){
                     zb_name = $('.zb_name').text();
+                    WebRoom = $('#WebRoom');
+                    // 双击恢复直播
+                    $('#live_videobar').dblclick(function (){
+                        WebRoom.html(WebRoom.html().replace(/Status=false/,"Status=true"));
+                    });
+                    // 关闭直播
+                    WebRoom.html(WebRoom.html().replace(/Status=true/,"Status=false"));
                     dy();
                 }
             });
